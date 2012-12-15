@@ -4,7 +4,7 @@
 	/*
 	 * Author: Andreas Linde <mail@andreaslinde.de>
 	 *
-	 * Copyright (c) 2009 Andreas Linde. All rights reserved.
+	 * Copyright (c) 2009-2011 Andreas Linde.
 	 * All rights reserved.
 	 *
 	 * Permission is hereby granted, free of charge, to any person
@@ -63,6 +63,7 @@ define("FAILURE_PHP_CURL_LIB", -41);                    // PHP: cURL library mis
 define("SEARCH_TYPE_ID", 0);                            // Search for a crash ID
 define("SEARCH_TYPE_DESCRIPTION", 1);                   // Search for in the crash descriptions
 define("SEARCH_TYPE_CRASHLOG", 2);                      // Search for in the crashlogs
+define("SEARCH_TYPE_CONTACT", 3);			// Search for in the Contact Name
 
 $statusversions = array(0 => 'Unknown', 1 => 'In development', 2 => 'Submitted', 3 => 'Available', 4 => 'Discontinued');
 
@@ -109,6 +110,8 @@ $colorOther = "grey";                           // color of timestamp for older 
 $admintitle = "CrashReporter Admin Interface";  // Adjust this string to your own title string shown on top of every page
 
 $createIssueTitle = "New crash type";           // The title given for a new issue
+
+$hockeyAppURL = 'ssl://beta.hockeyapp.net/';    // The HockeyApp server address to route the crashes to, this should normally never be edited!
 
 date_default_timezone_set('Europe/Berlin');	    // set the default timezone (see http://de3.php.net/manual/en/timezones.php)
 

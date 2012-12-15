@@ -3,7 +3,7 @@
 	/*
 	 * Author: Andreas Linde <mail@andreaslinde.de>
 	 *
-	 * Copyright (c) 2009 Andreas Linde & Kent Sutherland. All rights reserved.
+	 * Copyright (c) 2009-2011 Andreas Linde & Kent Sutherland.
 	 * All rights reserved.
 	 *
 	 * Permission is hereby granted, free of charge, to any person
@@ -139,7 +139,7 @@ function create_link($text, $link, $button, $variables)
     return $result;
 }
 
-function show_search($text, $currenttype, $break, $style = "float: right;")
+function show_search($text, $currenttype, $break = false, $style = "float: right;")
 {
     global $bundleidentifier, $version;
     
@@ -152,6 +152,7 @@ function show_search($text, $currenttype, $break, $style = "float: right;")
     echo '/>';
     if ($break) echo "<br/>";
     echo '<select name="type">';
+    add_option('Contact', SEARCH_TYPE_CONTACT, $currenttype);
     add_option('ID', SEARCH_TYPE_ID, $currenttype);
     add_option('Description', SEARCH_TYPE_DESCRIPTION, $currenttype);
     add_option('Crashlog', SEARCH_TYPE_CRASHLOG, $currenttype);
@@ -162,7 +163,7 @@ function show_search($text, $currenttype, $break, $style = "float: right;")
 function currentPageURL()
 {
     $pageURL = 'http';
-    if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+    if (@$_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
     $pageURL .= "://";
     if ($_SERVER["SERVER_PORT"] != "80") {
         $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
@@ -221,9 +222,24 @@ function mapPlatform($device)
 		case "iPhone3,1":
 			$platform = "4";
 			break;
+    case "iPhone3,3":
+      $platform = "4 CDMA";
+      break;
+    case "iPhone4,1":
+      $platform = "4S";
+      break;
 		case "iPad1,1":
 			$platform = "iPad";
 			break;
+    case "iPad2,1":
+      $platform = "iPad2 WiFi";
+      break;
+    case "iPad2,2":
+    	$platform = "iPad2 GSM";
+      break;
+    case "iPad2,3":
+    	$platform = "iPad2 CDMA";
+      break;
 		case "iPod1,1":
 			$platform = "iPod1G";
 			break;

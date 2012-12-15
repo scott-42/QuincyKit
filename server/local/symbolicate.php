@@ -3,7 +3,7 @@
 	/*
 	* Author: Andreas Linde <mail@andreaslinde.de>
 	*
-	* Copyright (c) 2009 Andreas Linde. All rights reserved.
+	* Copyright (c) 2009-2011 Andreas Linde.
 	* All rights reserved.
 	*
 	* Permission is hereby granted, free of charge, to any person
@@ -50,7 +50,7 @@ function doPost($postdata)
 		return 'error'; 
 	} 
 	else { 
-		$temp = "POST ".$uri."  HTTP/1.1\r\n"; 
+		$temp = "POST ".$uri." HTTP/1.1\r\n"; 
 		$temp .= "Host: ".$host."\r\n"; 
 		$temp .= "User-Agent: PHP Script\r\n"; 
 		$temp .= "Content-Type: application/x-www-form-urlencoded\r\n";
@@ -127,8 +127,8 @@ if ($content !== false && strlen($content) > 0)
 		
 		
 			echo "  Symbolicating ...\n";
-				
-			exec('./symbolicatecrash -o '.$resultfilename.' '.$filename);
+			
+			exec('perl ./symbolicatecrash.pl -o '.$resultfilename.' '.$filename);
 	
 			unlink($filename);
 			
